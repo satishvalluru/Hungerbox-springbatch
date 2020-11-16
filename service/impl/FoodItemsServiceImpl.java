@@ -41,11 +41,11 @@ public class FoodItemsServiceImpl implements FoodItemService {
 
 		});
 
-		for (FoodItem foodItems : foodItem) {
-			FoodItemDTO foodItemDto = new FoodItemDTO();
-			BeanUtils.copyProperties(foodItems, foodItemDto);
-			foodItemDtos.add(foodItemDto);
-		}
+		/*
+		 * for (FoodItem foodItems : foodItem) { FoodItemDTO foodItemDto = new
+		 * FoodItemDTO(); BeanUtils.copyProperties(foodItems, foodItemDto);
+		 * foodItemDtos.add(foodItemDto); }
+		 */
 
 		return foodItemDtos;
 	}

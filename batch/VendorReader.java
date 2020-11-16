@@ -19,7 +19,7 @@ public VendorReader(Resource resource) {
 		setResource(resource);
 		
 		DelimitedLineTokenizer lineTokenizer = new DelimitedLineTokenizer();
-		lineTokenizer.setNames(new String[] { "vendorId", "vendorAccountNumber", "vendorAddress", "vendorEmail", "vendorName", "vendorPhone" });
+		lineTokenizer.setNames(new String[] { "vendorAccountNumber", "vendorAddress", "vendorEmail", "vendorName", "vendorPhone" });
 		lineTokenizer.setDelimiter(",");
 	    lineTokenizer.setStrict(false);
 	    

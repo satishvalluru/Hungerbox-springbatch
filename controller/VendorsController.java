@@ -23,7 +23,7 @@ public class VendorsController {
 	@RequestMapping("/run-vendorbatch-job")
 	public String handle() throws Exception {
 
-		JobParameters jobParameters = new JobParametersBuilder().addString("source", "Spring Boot").toJobParameters();
+		JobParameters jobParameters = new JobParametersBuilder().addString("source", " Boot1").toJobParameters();
 		jobLauncher.run(accountKeeperJob, jobParameters);
 
 		return "Batch job has been invoked";

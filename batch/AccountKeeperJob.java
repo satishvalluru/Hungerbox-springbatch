@@ -35,13 +35,13 @@ public class AccountKeeperJob extends JobExecutionListenerSupport {
 	Resource resources;
 
 	@Autowired
-	Processor processor;
+	FoodItemProcessor processor;
 	
 	@Autowired
 	VendorProcessor vendorProcessor;
 
 	@Autowired
-	Writer writer;
+	FoodItemWriter foodItemWriter;
 	
 	@Autowired
 	VendorWriter vendorwriter;
@@ -49,8 +49,8 @@ public class AccountKeeperJob extends JobExecutionListenerSupport {
 	@Bean(name = "accountJob")
 	public Job accountKeeperJob() {
 
-		Step step = stepBuilderFactory.get("step-1").<FoodItem, FoodItem>chunk(1).reader(new Reader(resource))
-				.processor(processor).writer(writer).build();
+		Step step = stepBuilderFactory.get("step-1").<FoodItem, FoodItem>chunk(1).reader(new FoodItemReader(resource))
+				.writer(foodItemWriter).build();
 
 		Job job = jobBuilderFactory.get("accounting-job").incrementer(new RunIdIncrementer()).listener(this).start(step)
 				.build();
@@ -61,8 +61,8 @@ public class AccountKeeperJob extends JobExecutionListenerSupport {
 	@Bean(name = "vendorJob")
 	public Job vendorJob() {
 
-		Step step = stepBuilderFactory.get("step-1").<Vendors, Vendors>chunk(1).reader(new VendorReader(resources))
-				.processor(vendorProcessor).writer(vendorwriter).build();
+		Step step = stepBuilderFactory.get("step-2").<Vendors, Vendors>chunk(1).reader(new VendorReader(resources))
+				.writer(vendorwriter).build();
 
 		Job job = jobBuilderFactory.get("vendor-job").incrementer(new RunIdIncrementer()).listener(this).start(step)
 				.build();

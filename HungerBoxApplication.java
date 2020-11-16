@@ -16,11 +16,11 @@ public class HungerBoxApplication implements CommandLineRunner {
 	 * 
 	 * @Autowired Job job;
 	 */
-	
+
 	public static void main(String[] args) {
 		SpringApplication.run(HungerBoxApplication.class, args);
 	}
-	
+
 	/*
 	 * @Scheduled(fixedDelay = 30000) public void doJob() { JobParameters parameters
 	 * = new JobParametersBuilder().addString("JobID",
@@ -39,6 +39,6 @@ public class HungerBoxApplication implements CommandLineRunner {
 	@Override
 	public void run(String... args) throws Exception {
 		// TODO Auto-generated method stub
-		
+
 	}
 }
